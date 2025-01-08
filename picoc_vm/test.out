@@ -1,0 +1,45 @@
+#Picoc12 2020-11-20
+__start__:
+	call	main
+	halt
+#組込み関数 read()
+read:
+	enter
+	rd
+	#【 課題 1 】 戻り値領域にストア
+	storel	2
+	leave
+	ret
+#組込み関数 writge()
+write:
+	enter
+	pushl	3
+	wr
+	leave
+	ret
+#組込み関数 writeln()
+writeln:
+	enter
+	wrln
+	leave
+	ret
+#関数定義
+main:
+	enter
+	#複文
+	#式文
+	pushi	1
+	mvsp	-1
+	call	write
+	storet	1
+	mvsp	1
+	mvsp	1
+	#式文終わり
+	#式文
+	mvsp	-1
+	call	writeln
+	mvsp	1
+	#式文終わり
+	#複文終わり
+	leave
+	ret

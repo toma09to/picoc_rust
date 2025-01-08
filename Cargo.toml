@@ -1,0 +1,7 @@
+[workspace]
+
+resolver = "2"
+members = [
+    "picoc_vm",
+    "picoc_vm_cli",
+]

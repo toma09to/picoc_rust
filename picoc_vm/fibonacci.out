@@ -1,0 +1,135 @@
+#Picoc12 2020-11-20
+__start__:
+	call	main
+	halt
+#組込み関数 read()
+read:
+	enter
+	rd
+	#【 課題 1 】 戻り値領域にストア
+	storel	2
+	leave
+	ret
+#組込み関数 writge()
+write:
+	enter
+	pushl	3
+	wr
+	leave
+	ret
+#組込み関数 writeln()
+writeln:
+	enter
+	wrln
+	leave
+	ret
+#関数定義
+main:
+	enter
+	#複文
+	mvsp	-2
+	#式文
+	mvsp	-1
+	call	read
+	storel	-1
+	mvsp	1
+	#式文終わり
+	#式文
+	#【 課題 2 】変数に対するコード
+	pushl	-1
+	mvsp	-1
+	call	fib
+	storet	1
+	mvsp	1
+	storel	-2
+	mvsp	1
+	#式文終わり
+	#式文
+	#【 課題 2 】変数に対するコード
+	pushl	-2
+	mvsp	-1
+	call	write
+	storet	1
+	mvsp	1
+	mvsp	1
+	#式文終わり
+	#式文
+	mvsp	-1
+	call	writeln
+	mvsp	1
+	#式文終わり
+	mvsp	2
+	#複文終わり
+	leave
+	ret
+#関数定義
+fib:
+	enter
+	#複文
+	#if文
+	#【 課題 2 】変数に対するコード
+	pushl	3
+	pushi	0
+	eq
+	jf	.L0
+	#条件成立時
+	#複文
+	#return文
+	pushi	0
+	storel	2
+	leave
+	ret
+	#return文終わり
+	#複文終わり
+	jp	.L1
+.L0:
+	#条件不成立時
+	#if文
+	#【 課題 2 】変数に対するコード
+	pushl	3
+	pushi	1
+	eq
+	jf	.L2
+	#条件成立時
+	#複文
+	#return文
+	pushi	1
+	storel	2
+	leave
+	ret
+	#return文終わり
+	#複文終わり
+	jp	.L3
+.L2:
+	#条件不成立時
+	#複文
+	#return文
+	#【 課題 2 】変数に対するコード
+	pushl	3
+	pushi	2
+	sub
+	mvsp	-1
+	call	fib
+	storet	1
+	mvsp	1
+	#【 課題 2 】変数に対するコード
+	pushl	3
+	pushi	1
+	sub
+	mvsp	-1
+	call	fib
+	storet	1
+	mvsp	1
+	add
+	storel	2
+	leave
+	ret
+	#return文終わり
+	#複文終わり
+.L3:
+	#if文終わり
+.L1:
+	#if文終わり
+	#複文終わり
+	leave
+	ret

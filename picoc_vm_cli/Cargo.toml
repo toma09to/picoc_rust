@@ -1,0 +1,8 @@
+[package]
+name = "picoc_vm_cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+getopts = "0.2.21"
+picoc_vm = { path = "../picoc_vm" }
