@@ -5,6 +5,6 @@ authors = ["toma09to <contact@mail.toma09to.com>"]
 description = "picoc VM with Rust"
 edition = "2021"
 repository = "https://github.com/toma09to/picoc_rust"
-license = "MIT"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
