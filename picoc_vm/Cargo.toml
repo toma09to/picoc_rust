@@ -1,6 +1,10 @@
 [package]
 name = "picoc_vm"
 version = "0.1.0"
+authors = ["toma09to <contact@mail.toma09to.com>"]
+description = "picoc VM with Rust"
 edition = "2021"
+repository = "https://github.com/toma09to/picoc_rust"
+license = "MIT"
 
 [dependencies]
