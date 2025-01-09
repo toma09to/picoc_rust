@@ -5,16 +5,31 @@ use std::fmt::{Display, Formatter};
 /// The error type for VM operations.
 #[derive(Debug)]
 pub enum Error {
+    /// The error from [`std::io::Error`].
+    ///
+    /// This error is raised when an I/O error(e.g. File Not Found, Permission denied) occurs.
     IoError(io::Error),
+    /// Unknown label is found in an operand.
     LabelNotFound(String),
+    /// The value of PC exceeds an instruction memory.
     MemoryOutOfBound,
+    /// The error from [`std::num::ParseIntError`].
+    ///
+    /// VM cannot parse an integer operand.
     ParseIntError(num::ParseIntError),
+    /// An opcode is not found.
     OpcodeNotFound,
+    /// An operand is not found.
     OperandNotFound,
+    /// The value of SP exceeds the top of a stack (SP < 0).
     StackOverflow,
+    /// VM attempts to read outside of a stack.
     StackOutOfBound,
+    /// The value of SP exceeds the bottom of a stack (SP >= [`VM_STACK_SIZE`](crate::VM_STACK_SIZE)).
     StackUnderflow,
+    /// An unknown opcode is found.
     UnknownOpcode(String),
+    /// VM halted.
     VmHalted,
 }
 
