@@ -1,7 +1,11 @@
 [package]
 name = "picoc_vm_cli"
 version = "0.1.0"
+authors = ["toma09to <contact@mail.toma09to.com>"]
+description = "picoc VM CLI"
 edition = "2021"
+repository = "https://github.com/toma09to/picoc_rust"
+license = "MIT"
 
 [dependencies]
 getopts = "0.2.21"
